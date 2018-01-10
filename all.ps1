@@ -13,35 +13,6 @@ $start_time = Get-Date
 
 $wc = New-Object System.Net.WebClient
 
-
-$wc.DownloadFile($fireurl, $outputfire)
-
-#OR
-(New-Object System.Net.WebClient).DownloadFile($fireurl, $outputfire)
-
-Write-Output "Time taken for keypass: $((Get-Date).Subtract($start_time).Seconds) second(s)"
-
-
-
-
-$fire=Start-Process "$outputfire" -ArgumentList "-ms" -Wait
-if( $fire.ExitCode -eq 0)
-{
-write-host "firefox installed susccessfully"
-}
-
-
-$WshShell = New-Object -comObject WScript.Shell
-$Shortcut = $WshShell.CreateShortcut("$Home\Desktop\Mobaex.lnk")
-$Shortcut.TargetPath = "$pwd\Softs\.exe"
-$Shortcut.Save()
-
-write-host "mobaxterm installed susccessfully"
-
-
-
-
-
 $wc.DownloadFile($keypassurl, $outputkeypass)
 
 #OR
@@ -57,6 +28,39 @@ if( $keypass.ExitCode -eq 0)
 {
 write-host "keypass installed susccessfully"
 }
+
+
+
+
+
+<#$wc.DownloadFile($fireurl, $outputfire)
+
+#OR
+(New-Object System.Net.WebClient).DownloadFile($fireurl, $outputfire)
+
+Write-Output "Time taken for keypass: $((Get-Date).Subtract($start_time).Seconds) second(s)"
+
+
+
+
+$fire=Start-Process "$outputfire" -ArgumentList "-ms" -Wait
+if( $fire.ExitCode -eq 0)
+{
+write-host "firefox installed susccessfully"
+}
+
+#>
+$WshShell = New-Object -comObject WScript.Shell
+$Shortcut = $WshShell.CreateShortcut("$Home\Desktop\Mobaex.lnk")
+$Shortcut.TargetPath = "$pwd\Softs\.exe"
+$Shortcut.Save()
+
+write-host "mobaxterm installed susccessfully"
+
+
+
+
+
 
 
 <#$st = Start-Process "$Dest\keypass.exe" -ArgumentList "/VERYSILENT" -Wait
